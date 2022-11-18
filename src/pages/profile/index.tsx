@@ -3,24 +3,20 @@ import React, { useEffect } from 'react'
 import { Flex, Box, Heading, Text, Button, Link, Stack } from '@chakra-ui/react'
 import axios from 'axios';
 import router from 'next/router';
+import { api } from '../../services/api/api';
+import { parseCookies } from 'nookies';
 
 const Profile = () => {
 
+  const { 'nextauth.token': token } = parseCookies();
 
-              
 
   useEffect(() => {
-      axios.get('http://150.230.73.121:8000/accounts/me/', {
-        headers: {          
-          withCredentials: true,
-        },
-    })
-      .then((response) => {
-        console.log(response);
-      }
-      
-      )}
-  )
+    if (!token) {
+      router.push('/');
+    }
+  }, [token]);
+  
 
   return (
     <Flex
@@ -45,5 +41,7 @@ const Profile = () => {
     </Flex>
   )
 }
+
+
 
 export default Profile

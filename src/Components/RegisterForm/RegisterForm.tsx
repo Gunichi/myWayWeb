@@ -33,7 +33,7 @@ export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleCreateAccount = () => {
-    axios.post('http://150.230.73.121:8000/accounts/register/', {
+    axios.post('http://localhost:8000/accounts/register/', {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',

@@ -15,6 +15,8 @@ import {
 import axios from 'axios';
 import router from 'next/router';
 import { useEffect, useState } from 'react';
+import { api } from '../../services/api/api'
+import { parseCookies, setCookie } from 'nookies';
 
 
 export default function LoginForm() {
@@ -22,31 +24,33 @@ export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+
   const handleSubmit = () => {
-      axios.post('http://150.230.73.121:8000/accounts/login/', {
-        headers: {
-          withCredentials: true,
-        },
-        user: email,
-        password: password,
-      })
-
-
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          router.push('/dashboard');
-        } 
-
+    api.post('/accounts/login/', {
+      headers: {
+        withCredentials: true,
+      },
+      user: email,
+      password: password,
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        setCookie(undefined, 'nextauth.token', response.data.token, {
+          maxAge: 60 * 60 * 1, // 1 hour
+        });
         
 
+        router.push('/dashboard');
+      } 
+    })
+    .catch((error) => {
+      console.log(error);
+      alert('Usuario o contraseña incorrectos');
+    });
+  }
 
-      })
-      .catch((error) => {
-        console.log(error);
-        alert('Usuario o contraseña incorrectos');
-      });
-    }
+
+  
 
   return (
     <Flex
