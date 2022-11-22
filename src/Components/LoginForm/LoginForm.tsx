@@ -35,7 +35,7 @@ export default function LoginForm() {
     })
     .then((response) => {
       if (response.status === 200) {
-        setCookie(undefined, 'nextauth.token', response.data.token, {
+        setCookie(undefined, 'nextauth.token', response.data.jwt, {
           maxAge: 60 * 60 * 1, // 1 hour
         });
         

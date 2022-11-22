@@ -40,7 +40,7 @@ export default function Nav(
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={'whiteAlpha.100'} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -102,11 +102,11 @@ export default function Nav(
             </Stack>
           </Box>
         ) : null}
+
+        <Box>{children}</Box>
       </Box>
 
-      <Box p={4}>
-
-      </Box>
+      
     </>
   );
 }

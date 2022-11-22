@@ -11,12 +11,12 @@ export function getAPIClient(ctx?: any) {
     baseURL: 'http://150.230.73.121:8000',
   });
 
-  //get token from Set-Cookie header and set on Authorization header of axios instance 
   if (token) {
-    api.defaults.headers['Authorization'] = `Bearer ${token}`;
+
+    api.defaults.headers['Authorization'] =  token;
+
   }
   
-
   
 
   return api;

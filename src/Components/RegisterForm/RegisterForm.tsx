@@ -20,6 +20,7 @@ import axios from 'axios';
 import { Modal } from '@mantine/core';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import router from 'next/router';
+import { api } from '../../services/api/api';
 
 export default function RegisterForm() {
 
@@ -33,13 +34,8 @@ export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleCreateAccount = () => {
-    axios.post('http://localhost:8000/accounts/register/', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        withCredentials: true,
-      },
+    api.post('/accounts/register/', {
+      withCredentials: true,  
       name,
       username,
       email,
