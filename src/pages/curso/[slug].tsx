@@ -99,7 +99,10 @@ const CourseDetails = () => {
           >
             <Text fontSize="2xl" fontWeight="bold" color="#7A5205">Módulos</Text>
             {course.modulos?.map((modulo) => (
-              <Accordion allowToggle>
+              <Accordion 
+                allowToggle
+                key={modulo.id}
+              >
                 <AccordionItem 
                   border="none"
                   borderRadius="md"
@@ -122,6 +125,7 @@ const CourseDetails = () => {
                     <Accordion allowToggle>
                       {modulo.videos?.map((video) => (
                         <AccordionItem
+                          key={video.id}
                           border="none"
                           borderRadius="md"
                           bg="white"
