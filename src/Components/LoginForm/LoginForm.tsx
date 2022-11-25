@@ -97,14 +97,14 @@ export default function LoginForm() {
                 align={'start'}
                 justify={'space-between'}>
                 <Checkbox colorScheme='teal'>Lembrar de mim</Checkbox>
-                <Link color={'teal.400'}>Esqueceu a senha?</Link>
+                <Link color={'#19786A'}>Esqueceu a senha?</Link>
               </Stack>
               <Button
                 onClick={handleSubmit}
-                bg={'teal.400'}
+                bg={'#19786A'}
                 color={'white'}
                 _hover={{
-                  bg: 'teal.500',
+                  bg: '#FEA800',
                 }}>
                 Entrar
               </Button>

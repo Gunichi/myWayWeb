@@ -134,14 +134,22 @@ export default function RegisterForm() {
                   bg={'#FEA800'}
                   color={'white'}
                   _hover={{
-                    bg: '#ad6f03',
+                    bg: '#19786A',
                   }}>
                   Criar conta
                 </Button>
               </Stack>
               <Stack pt={6}>
                 <Text align={'center'}>
-                  Já tem um cadastro? <Link color={'#FEA800'}>Login</Link>
+                  Já tem um cadastro? 
+                  <Link 
+                    _hover={{color: '#19786A'}}
+                    color={'#FEA800'}
+                    onClick={() => router.push('/login')}
+                    ml={1}
+                  > 
+                    Login
+                  </Link>
                 </Text>
               </Stack>
             </Stack>

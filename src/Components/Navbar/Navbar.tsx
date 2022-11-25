@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import {
   Box,
   Flex,
@@ -13,34 +13,73 @@ import {
   MenuItem,
   MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
+  Image
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, AddIcon } from '@chakra-ui/icons';
+import { Router, useRouter } from 'next/router';
+import { FiLogOut } from 'react-icons/fi';
+import { api } from '../../services/api/api';
+import { parseCookies } from 'nookies';
 
-const Links = ['Dashboard', 'Profile', 'Team'];
+const Links = ['Dashboard', 'Team', 'RoadMap'];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
+  
   <Link
     px={2}
     py={1}
     rounded={'md'}
     _hover={{
       textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={'#'}>
+      bg: '#FEA800',
+      color: 'white'
+    }}    
+    href={
+      children === 'Dashboard'
+        ? '/dashboard'
+        : children === 'Profile'
+        ? '/perfil'
+        : '/team'
+    }>
     {children}
   </Link>
 );
 
-export default function Nav(
-  { children }: { children: ReactNode }) {
+export default function Nav() {
+
+  const [isTeacher, setIsTeacher] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    router.push('/');
+  };
+
+  useEffect(() => {
+
+    const { 'nextauth.token': token } = parseCookies()
+
+    api.get(`/accounts/me/`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      setIsTeacher(response.data.teacher)
+    }).catch((error) => {
+      console.log(error)
+    })
+
+  }, [])
+
+  console.log(isTeacher)
+
+  const router = useRouter();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Box bg={'whiteAlpha.100'} px={4}>
+      <Box bg={'whiteAlpha.100'} px={4} >
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -50,24 +89,75 @@ export default function Nav(
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box>Logo</Box>
+            <Image src='https://i.imgur.com/KiNsn8w.png' alt='logo' width={100} mt={4}/>
             <HStack
               as={'nav'}
               spacing={4}
-              display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+              display={{ base: 'none', md: 'flex' }}
+            >
+              <Button 
+                bg={router.pathname === '/dashboard' ? '#FEA800' : 'white'}
+                color={router.pathname === '/dashboard' ? 'white' : '#FEA800'}
+                _hover={{
+                  bg: '#19786A',
+                  color: 'white'                
+                }}
+                onClick={() => router.push('/dashboard')}
+              >
+                Dashboard
+              </Button>
+              <Button 
+                bg={router.pathname === '/team' ? '#FEA800' : 'white'}
+                color={router.pathname === '/team' ? 'white' : '#FEA800'}
+                _hover={{
+                  bg: '#19786A',
+                  color: 'white'
+                }}
+                onClick={() => router.push('/team')}
+              >
+                Team
+              </Button>
+              <Button 
+                bg={router.pathname === '/roadmap' ? '#FEA800' : 'white'}
+                color={router.pathname === '/roadmap' ? 'white' : '#FEA800'}
+                _hover={{
+                  bg: '#19786A',
+                  color: 'white',
+                }}
+                onClick={() => router.push('/roadmap')}
+              >
+                RoadMap
+              </Button>
+              {isTeacher ? 
+                <Button 
+                  bg={router.pathname === '/novoconteudo' ? '#FEA800' : 'white'}
+                  color={router.pathname === '/novoconteudo' ? 'white' : '#FEA800'}
+                  _hover={{
+                    bg: '#19786A',
+                    color: 'white',
+                  }}
+                  onClick={() => router.push('/novoconteudo')}
+                >
+                  Postar conteúdo
+                </Button>
+              : null}
+              
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
             <Button
               variant={'solid'}
-              colorScheme={'teal'}
+              bg={'#19786A'}
+              color={'white'}
               size={'sm'}
               mr={4}
-              leftIcon={<AddIcon />}>
-              Action
+              _hover={{
+                bg: '#FEA800',
+                color: 'white',
+              }}
+              onClick={handleLogout}
+              leftIcon={<FiLogOut />}>
+              Sair
             </Button>
             <Menu>
               <MenuButton
@@ -84,10 +174,38 @@ export default function Nav(
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    router.push('/perfil')
+                  }}
+                  _hover={{
+                    bg: '#19786A',
+                    color: 'white'
+                  }}
+                >
+                  Editar perfil
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    router.push('/participar')
+                  }}
+                  _hover={{
+                    bg: '#19786A',
+                    color: 'white'
+                  }}
+                >
+                  Ser professor
+                </MenuItem>
                 <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
+                <MenuItem
+                  _hover={{
+                    bg: '#FEA800',
+                    color: 'white'
+                  }}
+                  onClick={() => { router.push('/suporte') }}
+                >
+                  Suporte
+                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>
@@ -102,11 +220,7 @@ export default function Nav(
             </Stack>
           </Box>
         ) : null}
-
-        <Box>{children}</Box>
-      </Box>
-
-      
+      </Box>   
     </>
   );
 }

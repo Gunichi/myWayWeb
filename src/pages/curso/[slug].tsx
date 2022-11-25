@@ -133,10 +133,10 @@ const CourseDetails = () => {
                           mt="4"
                         >
                           <h2>
-                            <AccordionButton _expanded={{ bg: "#FEA800", color: "gray.900", borderRadius:'5' }}>
+                            <AccordionButton color="#7A5205" _expanded={{ bg: "#19786A", color: "white", borderRadius:'5' }}>
                               <Box flex="1" textAlign="left">
                                 <Flex justifyContent="space-between" alignItems="center">
-                                  <Text fontSize="md" fontWeight="bold" color="#7A5205"> {video.titulo} </Text>
+                                  <Text fontSize="md" fontWeight="bold" > {video.titulo} </Text>
                                   <Badge bg="#FEA800" fontSize="md" borderRadius={'md'} color="#7A5205"> {video.id}° Aula</Badge>
                                 </Flex>
                               </Box>
