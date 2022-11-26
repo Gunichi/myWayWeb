@@ -117,17 +117,6 @@ export default function Nav() {
               >
                 Team
               </Button>
-              <Button 
-                bg={router.pathname === '/roadmap' ? '#FEA800' : 'white'}
-                color={router.pathname === '/roadmap' ? 'white' : '#FEA800'}
-                _hover={{
-                  bg: '#19786A',
-                  color: 'white',
-                }}
-                onClick={() => router.push('/roadmap')}
-              >
-                RoadMap
-              </Button>
               {isTeacher ? 
                 <Button 
                   bg={router.pathname === '/novoconteudo' ? '#FEA800' : 'white'}

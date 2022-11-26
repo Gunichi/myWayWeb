@@ -1,20 +1,17 @@
-import { useEffect, useState } from 'react';
-import { parseCookies } from 'nookies';
-
-import { api } from '../../services/api/api';
-import { Badge, Box, Flex, Text, Image, SimpleGrid, Button, Stack, Avatar, Accordion,
+import { Flex, Text, Badge, Box, Image, SimpleGrid, Button, Stack, Avatar, Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  AccordionIcon, } from '@chakra-ui/react';
-
-import router from 'next/router';
-import SmallWithSocial from '../../Components/Footer/Footer';
-import Nav from '../../Components/Navbar/Navbar';
+  AccordionIcon, } from '@chakra-ui/react'; 
+import { parseCookies } from 'nookies';
+import { useEffect, useState } from 'react';
 import { FiMoreHorizontal } from 'react-icons/fi';
-import Sidebar from '../../Components/Sidebar';
+import Sidebar from "../Components/Sidebar"
+import { api } from '../services/api/api';
 
-const Dashboard = () => {
+
+
+const sidebar = () => {
 
   type Courses = {
     id: string;
@@ -65,17 +62,12 @@ const Dashboard = () => {
 
   }, [])
 
-
-
-  console.log(courses);
-  
   return (
     <>
-    <Nav />
-    <Flex w="100%" h="170vh">
-      
-      <Flex w="78%" h="170vh" maxW={1480} bg="green">
-        <Box w="100%" h="100%" maxW={1480} bg="#F6F6F6" mb='20'>
+    <Sidebar />
+    <Flex
+        
+      >
           <Text fontSize="3xl" fontWeight="bold" color="#000000" ml="10" mt="10">Olá, {profile.name} ✌️</Text>
           {/*<Box maxW={1480} bgGradient='linear(to-l, #7928CA, #FF0080)' m={10} borderRadius='md'>
             <Stack spacing={2} p={5}>
@@ -139,52 +131,9 @@ const Dashboard = () => {
               </Box>
             ))}
           </SimpleGrid>
-        </Box>
-      </Flex> 
-      <Flex
-        w="22%"
-        h="180vh"
-        maxW={1480}
-        bg="gray.100"
-      >
-        <Box 
-          bg="#FBFBFB"
-          borderRadius="md"
-          mt="2"
-          ml="2"
-          mr="2"
-          mb="2"
-          h='fit-content'
-          width={'100%'}
-        >
-          <Text
-            fontSize="md"
-            fontWeight="bold"
-            color="gray.600"
-            ml="2"
-            mt="2"
-          >
-            
-          </Text>
-          
-          {courses.map((course) => (
-            
-            <Box mt={4}>
-            <Text>
-              {course.titulo}
-            </Text>
-            </Box>
-            
-        ))}
-        </Box>
-      </Flex>     
-    </Flex>
-    <SmallWithSocial />
+      </Flex>
     </>
   )
+}
 
-};
-
-
-export default Dashboard;
-
+export default sidebar

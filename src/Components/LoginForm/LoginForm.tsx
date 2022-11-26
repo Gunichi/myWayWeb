@@ -25,6 +25,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState('');
 
 
+
   const handleSubmit = () => {
     api.post('/accounts/login/', {
       headers: {
@@ -38,14 +39,11 @@ export default function LoginForm() {
         setCookie(undefined, 'nextauth.token', response.data.jwt, {
           maxAge: 60 * 60 * 1, // 1 hour
         });
-        
-
         router.push('/dashboard');
       } 
     })
     .catch((error) => {
-      console.log(error);
-      alert('Usuario o contraseña incorrectos');
+      alert('Usuário ou senha incorretos');
     });
   }
 
@@ -69,7 +67,7 @@ export default function LoginForm() {
           rounded={'lg'}
           bg={useColorModeValue('white', 'gray.700')}
           boxShadow={'lg'}
-          p={8}>
+          p={8}>            
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email</FormLabel>
@@ -97,7 +95,9 @@ export default function LoginForm() {
                 align={'start'}
                 justify={'space-between'}>
                 <Checkbox colorScheme='teal'>Lembrar de mim</Checkbox>
-                <Link color={'#19786A'}>Esqueceu a senha?</Link>
+                <Link color={'#19786A'} href={'/resetarsenha'}>
+                  Esqueceu a senha?
+                </Link>
               </Stack>
               <Button
                 onClick={handleSubmit}
@@ -110,6 +110,14 @@ export default function LoginForm() {
               </Button>
             </Stack>
           </Stack>
+          <Flex justify='center' mt={4}>
+            <Text fontSize={'sm'} color={'gray.600'}>
+              Não tem uma conta?{' '}
+              <Link color={'#FEA800'} href={'/criar-conta'}>
+                Cadastre-se
+              </Link>
+            </Text>
+          </Flex>
         </Box>
       </Stack>
     </Flex>
