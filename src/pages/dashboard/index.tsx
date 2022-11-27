@@ -73,7 +73,7 @@ const Dashboard = () => {
     <>
     <Nav />
     <Flex w="100%" h="170vh">
-      
+      <Sidebar />
       <Flex w="78%" h="170vh" maxW={1480} bg="green">
         <Box w="100%" h="100%" maxW={1480} bg="#F6F6F6" mb='20'>
           <Text fontSize="3xl" fontWeight="bold" color="#000000" ml="10" mt="10">Olá, {profile.name} ✌️</Text>

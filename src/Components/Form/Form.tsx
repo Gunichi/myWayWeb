@@ -25,6 +25,7 @@ import {
 import { useToast } from '@chakra-ui/react';
 import { api } from '../../services/api/api';
 import { parseCookies } from 'nookies';
+import Sidebar from '../Sidebar';
 
 const Form1 = () => {
 
@@ -555,7 +556,6 @@ export default function MultiStep() {
           </ModalFooter>
         </ModalContent>
       </Modal>
-
       <Box 
         borderWidth="1px"
         rounded="lg"

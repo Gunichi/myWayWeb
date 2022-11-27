@@ -226,7 +226,6 @@ export default function SocialProfileWithImage() {
           Salvar 
         </Button>
       </Modal>
-      <SmallWithSocial />
     </>
   );
 }
