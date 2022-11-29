@@ -12,7 +12,6 @@ import router from 'next/router';
 import SmallWithSocial from '../../Components/Footer/Footer';
 import Nav from '../../Components/Navbar/Navbar';
 import { FiMoreHorizontal } from 'react-icons/fi';
-import Sidebar from '../../Components/Sidebar';
 
 const Dashboard = () => {
 
