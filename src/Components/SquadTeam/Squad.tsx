@@ -16,7 +16,7 @@ import Nav from '../Navbar/Navbar';
 export default function SocialProfileSimple() {
   return (
     <Box>
-      <Nav />
+      <Nav></Nav>
       <Flex align={'center'} justify={'center'} py={10} >
       <Text
         bgGradient='linear(to-l, #19786A, #FEA800)'

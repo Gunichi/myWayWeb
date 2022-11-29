@@ -46,7 +46,9 @@ const NavLink = ({ children }: { children: ReactNode }) => (
   </Link>
 );
 
-export default function Nav() {
+export default function Nav(
+  { children }: { children: ReactNode }
+) {
 
   const [isTeacher, setIsTeacher] = useState(false);
 
@@ -210,6 +212,9 @@ export default function Nav() {
           </Box>
         ) : null}
       </Box>   
+      <Box>
+        {children}
+      </Box>
     </>
   );
 }
