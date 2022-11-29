@@ -133,6 +133,7 @@ const Dashboard = () => {
                   _hover={{
                     bg: '#19786A'
                   }}
+                  onClick={() => router.push(`/curso/${course.id}`)}
                 >
                   Acessar
                 </Button>
