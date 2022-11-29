@@ -12,11 +12,10 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import axios from 'axios';
 import router from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { api } from '../../services/api/api'
-import { parseCookies, setCookie } from 'nookies';
+import { setCookie } from 'nookies';
 
 
 export default function LoginForm() {

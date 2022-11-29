@@ -2,7 +2,15 @@ import { useEffect, useState } from 'react';
 import { parseCookies } from 'nookies';
 
 import { api } from '../../services/api/api';
-import { Badge, Box, Flex, Text, Image, SimpleGrid, Button, Stack, Avatar, Accordion,
+import { 
+  Badge, 
+  Box, 
+  Flex, 
+  Text, 
+  Image, 
+  SimpleGrid,
+  Button, 
+  Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,

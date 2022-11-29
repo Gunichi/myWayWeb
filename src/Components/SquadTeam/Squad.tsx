@@ -6,13 +6,11 @@ import {
   Text,
   Stack,
   Button,
-  Link,
   Badge,
   useColorModeValue,
   SimpleGrid,
   Flex,
 } from '@chakra-ui/react';
-import SmallWithSocial from '../Footer/Footer';
 import Nav from '../Navbar/Navbar';
 
 export default function SocialProfileSimple() {

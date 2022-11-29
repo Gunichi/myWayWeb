@@ -16,8 +16,8 @@ import {
   Stack,
   Image
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, AddIcon } from '@chakra-ui/icons';
-import { Router, useRouter } from 'next/router';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { useRouter } from 'next/router';
 import { FiLogOut } from 'react-icons/fi';
 import { api } from '../../services/api/api';
 import { parseCookies } from 'nookies';

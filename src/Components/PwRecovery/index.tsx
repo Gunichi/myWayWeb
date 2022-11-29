@@ -11,10 +11,6 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
-type ForgotPasswordFormInputs = {
-  email: string;
-};
-
 export default function ForgotPasswordForm(): JSX.Element {
 
   const router = useRouter();

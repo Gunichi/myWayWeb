@@ -13,7 +13,6 @@ import {
   HStack,
   useToast,
   AvatarBadge,
-  transition,
 } from '@chakra-ui/react';
 import { Modal } from '@mantine/core';
 import { parseCookies } from 'nookies';
