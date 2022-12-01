@@ -51,6 +51,7 @@ const Form1 = () => {
       }
     }).then((response) => {
       console.log(response.data);
+      alert('Curso cadastrado com sucesso!');
     }).catch((error) => {
       console.log(error);
     })
@@ -171,6 +172,7 @@ const Form2 = () => {
       }
     }).then((response) => {
       console.log(response.data);
+      alert('Módulo cadastrado com sucesso!');
     }).catch((error) => {
       console.log(error);
     })
@@ -328,6 +330,7 @@ const Form3 = () => {
       }
     }).then((response) => {
       console.log(response.data);
+      alert('Vídeo cadastrado com sucesso!');
     }).catch((error) => {
       console.log(error);
     })

@@ -24,7 +24,17 @@ import { parseCookies } from 'nookies';
 
 const Links = ['Dashboard', 'Team', 'RoadMap'];
 
+type ProfileProps = {
+  name: string;
+  email: string;
+  image: string;
+  username: string;
+  birthdate: string;
+  profilePic: string;
+};
+
 const NavLink = ({ children }: { children: ReactNode }) => (
+  
   
   <Link
     px={2}
@@ -51,6 +61,7 @@ export default function Nav(
 ) {
 
   const [isTeacher, setIsTeacher] = useState(false);
+  const [profile, setProfile] = useState<ProfileProps>({} as ProfileProps);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -67,6 +78,7 @@ export default function Nav(
       }
     }).then((response) => {
       setIsTeacher(response.data.teacher)
+      setProfile(response.data)
     }).catch((error) => {
       console.log(error)
     })
@@ -159,8 +171,9 @@ export default function Nav(
                 minW={0}>
                 <Avatar
                   size={'sm'}
+                  name={profile.name}
                   src={
-                    'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                    ''
                   }
                 />
               </MenuButton>

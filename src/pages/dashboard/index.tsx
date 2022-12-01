@@ -14,7 +14,8 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  AccordionIcon, } from '@chakra-ui/react';
+  AccordionIcon,
+  Stack, } from '@chakra-ui/react';
 
 import router from 'next/router';
 import SmallWithSocial from '../../Components/Footer/Footer';
@@ -81,21 +82,19 @@ const Dashboard = () => {
     <Nav />
     <Flex w="100%" h="170vh">
       
-      <Flex w="78%" h="170vh" maxW={1480} bg="green">
         <Box w="100%" h="100%" maxW={1480} bg="#F6F6F6" mb='20'>
           <Text fontSize="3xl" fontWeight="bold" color="#000000" ml="10" mt="10">Olá, {profile.name} ✌️</Text>
-          {/*<Box maxW={1480} bgGradient='linear(to-l, #7928CA, #FF0080)' m={10} borderRadius='md'>
+          <Box maxW={1480} bgGradient='linear(to-l, #7928CA, #FF0080)' m={10} borderRadius='md'>
             <Stack spacing={2} p={5}>
-              <Text fontSize="xl" fontWeight="bold" color="#FFF">A mudança te espera</Text>
-              <Text fontSize="xl" fontWeight="bold" color="#FFF" ml="10" mt="5">Aprenda com os melhores cursos</Text>
-              <Text fontSize="xl" fontWeight="bold" color="#FFF" ml="10" mt="2">Aprenda com os melhores cursos</Text>
+              <Text fontSize="xl" fontWeight="bold" color="#FFF">Todo conteúdo financeiro em um só lugar!</Text>
+              <Text fontSize="xl" fontWeight="bold" color="#FFF" ml="10" mt="5">Todo conhecimento a mais é válido</Text>
             </Stack>
-  </Box>*/}
+          </Box>
           <Text fontSize="3xl" fontWeight="bold" color="#000000" ml="10" mt="10">Cursos</Text>
           <SimpleGrid columns={3} spacing={10} p="6" maxW={1480} mx="auto" mt="6">
             {courses.map(course => (
               <Box key={course.id} maxW={1480} h='fit-content' bg="white" borderRadius="md" p="4">
-                <Image src={'https://i.imgur.com/qpnkIoO.png'} alt={course.titulo} borderRadius='10' h='150' w='100%' /> 
+                <Box bgGradient={`linear(to-r, #FF0080, #FF8C00)`} w="100%" h="10" borderRadius="md" ></Box>
                 <Badge borderRadius="full" px="2" bg="#FEA800" color="WHITE" mt="2" ml="2">
                   10 vídeos
                 </Badge>
@@ -148,44 +147,6 @@ const Dashboard = () => {
             ))}
           </SimpleGrid>
         </Box>
-      </Flex> 
-      <Flex
-        w="22%"
-        h="180vh"
-        maxW={1480}
-        bg="gray.100"
-      >
-        <Box 
-          bg="#FBFBFB"
-          borderRadius="md"
-          mt="2"
-          ml="2"
-          mr="2"
-          mb="2"
-          h='fit-content'
-          width={'100%'}
-        >
-          <Text
-            fontSize="md"
-            fontWeight="bold"
-            color="gray.600"
-            ml="2"
-            mt="2"
-          >
-            
-          </Text>
-          
-          {courses.map((course) => (
-            
-            <Box mt={4}>
-            <Text>
-              {course.titulo}
-            </Text>
-            </Box>
-            
-        ))}
-        </Box>
-      </Flex>     
     </Flex>
     <SmallWithSocial />
     </>

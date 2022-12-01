@@ -10,6 +10,7 @@ import { BsPlayCircle } from 'react-icons/bs'
 import  { useRouter } from 'next/router'
 import SmallWithSocial from '../../Components/Footer/Footer'
 import Nav from '../../Components/Navbar/Navbar'
+import ReactPlayer from 'react-player'
 
 type CourseDetails = {
   id: string;
@@ -61,7 +62,7 @@ const CourseDetails = () => {
       <Nav>    
       </Nav>
       
-      <Box w="100%" h="100vh" bg="gray.100" p="4" justifyContent="center" alignItems="center">
+      <Box w="100%" h="200vh" bg="gray.100" p="4" justifyContent="center" alignItems="center">
         <Box 
           w="100%" 
           bg="white" 
@@ -143,7 +144,7 @@ const CourseDetails = () => {
                               <AccordionIcon />
                             </AccordionButton>
                           </h2>
-                          <AccordionPanel pb={4}>
+                          <AccordionPanel pb={4} height={'100%'}>
                             <Flex justifyContent="space-between" alignItems="center">
                               <Text fontSize="md" fontWeight="bold" color="#7A5205"> Entenda um pouco melhor sobre os Fundos </Text>
                               <Button
@@ -160,12 +161,15 @@ const CourseDetails = () => {
                                 _focus={{ bg: "#FEA800", color: "#7A5205" }}
                                 fontSize="md"
                                 fontWeight="bold"
-                                onClick={() => router.push(video.linkVideo, '_blank')}
-
+                                onClick={() => window.open(video.linkVideo, '_blank')}
                               >
-                                Assistir
+                                Assistir no youtube
                               </Button>
                             </Flex>
+                            <Box bg="red" w="100%" h="100%" mt="4">
+                              <ReactPlayer url={video.linkVideo} width="100%" height="500px" />
+                            </Box>
+                            
                           </AccordionPanel>
                         </AccordionItem>
                       ))}
