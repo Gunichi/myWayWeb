@@ -4,7 +4,7 @@
 
 ![Resultado final do projeto](public/myway.png)
 >
-<h4 align="center"><a href="https://www.gunichi.me">Quer ver o projeto melhor? Clique aqui!</a></h4>
+<h4 align="center"><a href="https://myway-sage.vercel.app">Quer ver o projeto melhor? Clique aqui!</a></h4>
 
 ## 🔯 Sobre
 
