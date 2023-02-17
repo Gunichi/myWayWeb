@@ -2,7 +2,7 @@
   💻<br>MyWay - Plataforma com cursos de investimentos
 </h1>
 
-![Resultado final do projeto](public/preview.png)
+![Resultado final do projeto](public/myway.png)
 >
 <h4 align="center"><a href="https://www.gunichi.me">Quer ver o projeto melhor? Clique aqui!</a></h4>
 
